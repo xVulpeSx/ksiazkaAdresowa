@@ -4,19 +4,22 @@ import java.util.*;
 public class KsiazkaAdresowa {
     private Map<String, Osoba> rejestry = new HashMap<>();
 
-    public void wyswietl(){
+    public String doWyswietlenia(){
         Reset.reset();
-
-        System.out.println("Książka adresowa - dane:\n");
-
         StringBuilder buff = new StringBuilder();
-        for(Map.Entry<String, Osoba> entry : rejestry.entrySet()){
-            System.out.println(entry.getValue().getNazwiskoImieDoWyswietlenia());
-            System.out.println("\nNumer telefonu: ");
-            System.out.println(entry.getKey());
-            System.out.println("\n");
-            System.out.println(entry.getValue().adres.getAdresDoWyswietlenia());
+
+        buff.append("Książka adresowa - dane:\n");
+
+
+        for(Map.Entry<String, Osoba> entry : rejestry.entrySet()) {
+           buff.append(entry.getValue().getNazwiskoImieDoWyswietlenia())
+                   .append("\nNumer telefonu: ")
+                   .append(entry.getKey())
+                   .append("\n")
+                   .append(entry.getValue().adres.getAdresDoWyswietlenia())
+                   .append("\n\n");
         }
+        return buff.toString();
     }
     public void wstaw(){
         //tu można chyba zrobić wyjątek, że osoba już jest, narazie orbie jednak bez tego

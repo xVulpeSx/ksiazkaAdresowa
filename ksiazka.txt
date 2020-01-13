@@ -1,0 +1,7 @@
+Książka adresowa - dane:
+b j
+Numer telefonu: 123123123
+Adres: ul. a b/c, d, urząd pocztowy: e
+s a
+Numer telefonu: 123123122
+Adres: ul. d f, f, urząd pocztowy: g
