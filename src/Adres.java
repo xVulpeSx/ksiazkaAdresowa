@@ -1,11 +1,12 @@
+import java.lang.*;
 public class Adres extends Edytowalne{
     private String ulica;
-    private int nrDomu;
-    private int nrMieszkania;
-    private int kodPocztowy;
+    private String nrDomu;
+    private String nrMieszkania = "";
+    private String kodPocztowy;
     private String urzadPocztowy;
 
-    public Adres(String ulica, int nrDomu, int nrMieszkania, int kodPocztowy, String urzadPocztowy) {
+    public Adres(String ulica, String nrDomu, String nrMieszkania, String kodPocztowy, String urzadPocztowy) {
         this.ulica = ulica;
         this.nrDomu = nrDomu;
         this.nrMieszkania = nrMieszkania;
@@ -26,27 +27,27 @@ public class Adres extends Edytowalne{
         this.ulica = ulica;
     }
 
-    public int getNrDomu() {
+    public String getNrDomu() {
         return nrDomu;
     }
 
-    public void setNrDomu(int nrDomu) {
+    public void setNrDomu(String nrDomu) {
         this.nrDomu = nrDomu;
     }
 
-    public int getNrMieszkania() {
+    public String getNrMieszkania() {
         return nrMieszkania;
     }
 
-    public void setNrMieszkania(int nrMieszkania) {
+    public void setNrMieszkania(String nrMieszkania) {
         this.nrMieszkania = nrMieszkania;
     }
 
-    public int getKodPocztowy() {
+    public String getKodPocztowy() {
         return kodPocztowy;
     }
 
-    public void setKodPocztowy(int kodPocztowy) {
+    public void setKodPocztowy(String kodPocztowy) {
         this.kodPocztowy = kodPocztowy;
     }
 
@@ -56,5 +57,23 @@ public class Adres extends Edytowalne{
 
     public void setUrzadPocztowy(String urzadPocztowy) {
         this.urzadPocztowy = urzadPocztowy;
+    }
+
+    public String getAdresDoWyswietlenia(){
+        StringBuilder result = new StringBuilder();
+
+        result.append("Adres: ul. ")
+                .append(getUlica())
+                .append(" ")
+                .append(getNrDomu());
+        if(getNrMieszkania().equals("")){
+            result.append("/")
+                    .append(getNrMieszkania());
+        }
+        result.append(", ")
+                .append(getKodPocztowy())
+                .append(", urząd pocztowy: ")
+                .append(getUrzadPocztowy());
+        return result.toString();
     }
 }
