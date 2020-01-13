@@ -1,18 +1,12 @@
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class KsiazkaAdresowa {
     private Map<String, Osoba> rejestry = new HashMap<>();
 
     public void wyswietl(){
-        try {
-            Runtime.getRuntime().exec("cls");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Reset.reset();
+
         System.out.println("Książka adresowa - dane:\n");
 
         StringBuilder buff = new StringBuilder();
@@ -26,6 +20,19 @@ public class KsiazkaAdresowa {
     }
     public void wstaw(){
         //tu można chyba zrobić wyjątek, że osoba już jest, narazie orbie jednak bez tego
+        Scanner scanner = new Scanner(System.in);
+        String numerTelefonu = new String();
+        Reset.reset();
+
+        do {
+            numerTelefonu = scanner.next();
+        }while(!rejestry.containsKey(numerTelefonu));
+
+        Osoba nowyRejestr = new Osoba();
+
+        nowyRejestr.edycja();
+
+        rejestry.put(numerTelefonu, nowyRejestr);
     }
 
     public void usun(){

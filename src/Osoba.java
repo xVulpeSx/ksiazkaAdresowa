@@ -3,6 +3,7 @@ public class Osoba extends Edytowalne{
     private String nazwisko;
     Adres adres;
 
+    public Osoba(){};
     public Osoba(String imie, String nazwisko, Adres adres) {
         this.imie = imie;
         this.nazwisko = nazwisko;
@@ -36,7 +37,7 @@ public class Osoba extends Edytowalne{
 
     public void setAdres(Adres adres) {
         this.adres = adres;
-    }
+    };
 
     public String getNazwiskoImieDoWyswietlenia(){
         StringBuilder result = new StringBuilder();
