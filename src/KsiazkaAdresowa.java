@@ -25,8 +25,9 @@ public class KsiazkaAdresowa {
         Reset.reset();
 
         do {
+            System.out.println("Podaj numer telefonu: ");
             numerTelefonu = scanner.next();
-        }while(!rejestry.containsKey(numerTelefonu));
+        }while(rejestry.containsKey(numerTelefonu));
 
         Osoba nowyRejestr = new Osoba();
 

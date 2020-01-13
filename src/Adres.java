@@ -1,4 +1,6 @@
 import java.lang.*;
+import java.util.Scanner;
+
 public class Adres extends Edytowalne{
     private String ulica;
     private String nrDomu;
@@ -6,6 +8,7 @@ public class Adres extends Edytowalne{
     private String kodPocztowy;
     private String urzadPocztowy;
 
+    public Adres(){};
     public Adres(String ulica, String nrDomu, String nrMieszkania, String kodPocztowy, String urzadPocztowy) {
         this.ulica = ulica;
         this.nrDomu = nrDomu;
@@ -16,7 +19,20 @@ public class Adres extends Edytowalne{
 
     @Override
     public void edycja() {
-        //edycja wszystkiego
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nPodaj ulice: ");
+        setUlica(scanner.next());
+        System.out.println("Podaj numer domu: ");
+        setNrDomu(scanner.next());
+        System.out.println("Czy posiadasz numer mieszkania? (y/n)\n");
+        if(scanner.next().equals("y")){
+            System.out.println("Podaj numer mieszkania: ");
+            setNrMieszkania(scanner.next());
+        }
+        System.out.println("Podaj kod pocztowy (XX-XXX)");
+        setKodPocztowy(scanner.next());
+        System.out.println("Podaj urząd pocztowy; ");
+        setUrzadPocztowy(scanner.next());
     }
 
     public String getUlica() {

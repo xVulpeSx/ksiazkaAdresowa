@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Osoba extends Edytowalne{
     private String imie;
     private String nazwisko;
@@ -12,7 +14,13 @@ public class Osoba extends Edytowalne{
 
     @Override
     public void edycja() {
-        //edycja wszystkiego
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nPodaj Imię i nazwisko(oddzielone przyciskiem ENTER:\n");
+        setImie(scanner.next());
+        setNazwisko(scanner.next());
+        Adres adres = new Adres();
+        adres.edycja();
+        setAdres(adres);
     }
 
     public String getImie() {
