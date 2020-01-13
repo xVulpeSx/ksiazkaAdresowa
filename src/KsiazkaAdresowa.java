@@ -8,9 +8,6 @@ public class KsiazkaAdresowa {
         Reset.reset();
         StringBuilder buff = new StringBuilder();
 
-        buff.append("Książka adresowa - dane:\n");
-
-
         for(Map.Entry<String, Osoba> entry : rejestry.entrySet()) {
            buff.append(entry.getValue().getNazwiskoImieDoWyswietlenia())
                    .append("\nNumer telefonu: ")

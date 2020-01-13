@@ -1,8 +1,33 @@
 import java.io.*;
+import java.util.Arrays;
+
 public class Main {
-   private static void zapis(String fileName, KsiazkaAdresowa ksiazka) throws IOException {
+    private static void zapis(String fileName, KsiazkaAdresowa ksiazka) throws IOException {
        FileWriter openedFile = new FileWriter(fileName);
        openedFile.write(ksiazka.doWyswietlenia());
+       openedFile.close();
+   }
+
+   private static void poprawienieDanych(KsiazkaAdresowa ksiazka, char[] input){
+
+   }
+
+   private static void wczytywanie(String fileName, KsiazkaAdresowa ksiazka) throws IOException {
+       FileReader openedFile=null;
+       try
+       {
+           openedFile = new FileReader(fileName);
+       }
+       catch (FileNotFoundException fe)
+       {
+           System.out.println("File not found");
+       }
+
+       char[] cBuff = new char[2048];
+
+       openedFile.read(cBuff);
+
+       poprawienieDanych(ksiazka, cBuff);
        openedFile.close();
    }
 

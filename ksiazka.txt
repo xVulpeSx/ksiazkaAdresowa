@@ -1,7 +1,8 @@
-Książka adresowa - dane:
+32 12
+Numer telefonu: 12
+Adres: ul. 21 32, 321, urząd pocztowy: 321
+
 b j
 Numer telefonu: 123123123
 Adres: ul. a b/c, d, urząd pocztowy: e
-s a
-Numer telefonu: 123123122
-Adres: ul. d f, f, urząd pocztowy: g
+
