@@ -5,7 +5,7 @@ public class Adres extends Edytowalne{
     private int kodPocztowy;
     private String urzadPocztowy;
 
-    public Adres() {
+    public Adres(String ulica, int nrDomu, int nrMieszkania, int kodPocztowy, String urzadPocztowy) {
         this.ulica = ulica;
         this.nrDomu = nrDomu;
         this.nrMieszkania = nrMieszkania;
