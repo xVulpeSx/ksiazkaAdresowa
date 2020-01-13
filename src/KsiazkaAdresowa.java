@@ -48,4 +48,7 @@ public class KsiazkaAdresowa {
         //zapisywanie do pliku
     }
 
+    public void ultraSetter(String numer, Osoba osoba){
+        rejestry.put(numer, osoba);
+    }
 }

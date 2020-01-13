@@ -82,7 +82,7 @@ public class Adres extends Edytowalne{
                 .append(getUlica())
                 .append(" ")
                 .append(getNrDomu());
-        if(getNrMieszkania().equals("")){
+        if(!getNrMieszkania().equals("")){
             result.append("/")
                     .append(getNrMieszkania());
         }
