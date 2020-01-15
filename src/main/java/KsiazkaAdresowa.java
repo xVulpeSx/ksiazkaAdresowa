@@ -27,7 +27,6 @@ public class KsiazkaAdresowa {
     }
 
     public void wstaw(){
-        //tu można chyba zrobić wyjątek, że osoba już jest, narazie orbie jednak bez tego
         Scanner scanner = new Scanner(System.in);
         String numerTelefonu = new String();
         Reset.reset();
@@ -45,7 +44,18 @@ public class KsiazkaAdresowa {
     }
 
     public void usun(){
-        //usuwanie
+        Scanner s = new Scanner(System.in);
+        System.out.println("Podaj numer telefonu do usuniecia:");
+        String numerTelefonu= s.next();
+        rejestry.remove(numerTelefonu);
+    }
+
+    public void edycja(){
+        Scanner s = new Scanner(System.in);
+        System.out.println("Podaj numer telefonu do edycji:");
+        String numerTelefonu= s.next();
+        rejestry.remove(numerTelefonu);
+        this.wstaw();
     }
 
     public void wczytywanie(String fileName){
