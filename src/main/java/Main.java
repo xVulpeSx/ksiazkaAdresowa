@@ -6,6 +6,8 @@ public class Main {
     public static void main(String[] args){
         KsiazkaAdresowa ksiazka = new KsiazkaAdresowa();
 
+        ksiazka.wczytywanie("ksiazkaAdresowa.json");
+
         while(true){
             Scanner scanner = new Scanner(System.in);
 
