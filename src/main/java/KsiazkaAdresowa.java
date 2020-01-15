@@ -1,4 +1,11 @@
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class KsiazkaAdresowa {
@@ -18,6 +25,7 @@ public class KsiazkaAdresowa {
         }
         return buff.toString();
     }
+
     public void wstaw(){
         //tu można chyba zrobić wyjątek, że osoba już jest, narazie orbie jednak bez tego
         Scanner scanner = new Scanner(System.in);
@@ -40,15 +48,36 @@ public class KsiazkaAdresowa {
         //usuwanie
     }
 
-    public void wczytywanie(){
-        //wczytywanie z pliku
+    public void wczytywanie(String fileName){
+        String wczytane = new String(readAllBytesJava7(fileName));
+
+        Type type = new TypeToken<Map<String, Osoba>>(){}.getType();
+        rejestry = new Gson().fromJson(wczytane, type);
     }
 
-    public void zapisywanie(){
-        //zapisywanie do pliku
+    public void zapisywanie(String fileName) throws IOException {
+        String wartosci = new Gson().toJson(rejestry);
+
+        FileWriter openedFile = new FileWriter(fileName);
+        openedFile.write(wartosci);
+        openedFile.close();
     }
 
     public void ultraSetter(String numer, Osoba osoba){
         rejestry.put(numer, osoba);
+    }
+
+    private static String readAllBytesJava7(String filePath)
+    {
+        String content = "";
+        try
+        {
+            content = new String ( Files.readAllBytes( Paths.get(filePath) ) );
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return content;
     }
 }
