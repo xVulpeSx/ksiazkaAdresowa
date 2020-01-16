@@ -11,17 +11,27 @@ import java.util.*;
 public class KsiazkaAdresowa {
     private Map<String, Osoba> rejestry = new HashMap<>();
 
+    public String rejestrDoWyswietlenia(String numerTelefonu){
+        StringBuilder buff = new StringBuilder();
+
+        for(Map.Entry<String, Osoba> o: rejestry.entrySet()){
+            if(o.getKey().compareTo(numerTelefonu) == 0){
+                buff.append(o.getValue().getNazwiskoImieDoWyswietlenia())
+                        .append("\nNumer telefonu: ")
+                        .append(o.getKey())
+                        .append("\n")
+                        .append(o.getValue().adres.getAdresDoWyswietlenia())
+                        .append("\n\n");
+            }
+        }
+        return buff.toString();
+    }
+
     public String doWyswietlenia(){
-        Reset.reset();
         StringBuilder buff = new StringBuilder();
 
         for(Map.Entry<String, Osoba> entry : rejestry.entrySet()) {
-           buff.append(entry.getValue().getNazwiskoImieDoWyswietlenia())
-                   .append("\nNumer telefonu: ")
-                   .append(entry.getKey())
-                   .append("\n")
-                   .append(entry.getValue().adres.getAdresDoWyswietlenia())
-                   .append("\n\n");
+            buff.append(rejestrDoWyswietlenia(entry.getKey()));
         }
         return buff.toString();
     }
@@ -63,6 +73,17 @@ public class KsiazkaAdresowa {
 
         Type type = new TypeToken<Map<String, Osoba>>(){}.getType();
         rejestry = new Gson().fromJson(wczytane, type);
+    }
+
+    public String poNazwisku(String naziwskoDoWyszukania){
+        String result = new String("Nie znaleziono nazwiska :<\n");
+        for(Map.Entry<String, Osoba> o : rejestry.entrySet()){
+            if(naziwskoDoWyszukania.compareTo(o.getValue().getNazwisko()) == 0){
+                return rejestrDoWyswietlenia(o.getKey());
+            }
+        }
+
+        return result;
     }
 
     public void zapisywanie(String fileName) throws IOException {

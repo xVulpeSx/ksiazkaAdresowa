@@ -17,7 +17,8 @@ public class Main {
                     "1. Dodaj rejestr.\n" +
                     "2. Usun rejestr.\n" +
                     "3. Edytuj rejestr.\n" +
-                    "4. Zapisz i wyjdz.");
+                    "4. Wyswietl rejestr po nazwisku.\n" +
+                    "5. Zapisz i wyjdz.\n");
 
             int option = scanner.nextInt();
 
@@ -35,12 +36,18 @@ public class Main {
                     ksiazka.edycja();
                     break;
                 case 4:
+                    System.out.println("Podaj nazwisko do wyszukania:");
+                    System.out.println(ksiazka.poNazwisku(scanner.next()));
+                    break;
+                case 5:
                     try {
                         ksiazka.zapisywanie("ksiazkaAdresowa.json");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //zakoncz dzialanie
+                    return;
+
+                default:
                     break;
             }
         }
